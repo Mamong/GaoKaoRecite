@@ -1,0 +1,44 @@
+<!--pages/index/index.wxml-->
+<view class="app">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <navigator wx:if="{{current}}" class="big-plan" wx:key="_id" url="../schedule/index?scheduleId={{current.scheduleId}}">
+    <view class="title bold">{{current.title}}</view>
+    <view class="details">
+      <view class="detail">
+        <view class="name">当前进度</view>
+        <view class="value">{{current.progress}}%</view>
+      </view>
+      <view class="detail">
+        <view class="name">日期</view>
+        <view class="value">D{{current.currentDay}}</view>
+      </view>
+      <view class="detail">
+        <view class="name">已复习单词</view>
+        <view class="value">{{current.study}}/{{current.wordCount}}</view>
+      </view>
+    </view>
+  </navigator>
+  <view class="list-container">
+    <view class="section-title">
+      <view>复习计划</view>
+      <mp-icon bindtap="onTapAdd" icon="add2"></mp-icon>
+    </view>
+    <view class="empty-tips" wx:if="{{list.length == 0}}">暂无相关计划</view>
+    <view class="list">
+      <navigator wx:for="{{list}}" class="plan" wx:key="_id" url="../schedule/index?scheduleId={{item.scheduleId}}">
+        <view class="title bold">{{item.title}}</view>
+        <view class="details">
+          <view class="detail">
+            <view class="name">当前进度</view>
+            <view class="value">{{item.progress}}%</view>
+          </view>
+          <view class="detail">
+            <view class="name">日期</view>
+            <view class="value">D{{item.currentDay}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view class="empty-tips" wx:if="{{isEnd && list.length > 0}}">----已经到底了----</view>
+  </view>
+</view>

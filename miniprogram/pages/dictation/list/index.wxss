@@ -1,0 +1,25 @@
+/* pages/dictation/list/index.wxss */
+.app {
+  /* padding: 10rpx; */
+  margin-bottom: 110rpx;
+}
+
+.section-title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  padding: 24rpx;
+}
+
+.item {
+  display: flex;
+  border-bottom: 2rpx solid #888;
+  padding: 12rpx 0;
+}
+
+.item .word,
+.item .answer {
+  flex: 1;
+}

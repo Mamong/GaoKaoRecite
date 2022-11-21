@@ -1,0 +1,7 @@
+<!--components/segment/index.wxml-->
+<view class="segments-wrapper">
+  <view class="segments">
+    <view class="overlay" style="left: {{offsetX + '%'}};width: {{widthX + '%'}};"></view>
+    <view class="segment {{selectedIndex == index ? 'selected':''}}" wx:for="{{items}}" wx:key="*this" bindtap="onTapSegment" data-index="{{index}}">{{item}}</view>
+  </view>
+</view>

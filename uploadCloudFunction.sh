@@ -1,0 +1,1 @@
+"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e fudodev-4ue4v --n quickstartFunctions --r --project "/Users/mac/WeChatProjects/GaoKaoRecite" --report_first --report

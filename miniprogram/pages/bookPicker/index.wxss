@@ -1,0 +1,105 @@
+/* pages/wordBook/index.wxss */
+.app {
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.cates{
+  display: flex;
+  position: sticky;
+  top: 0;
+  flex-wrap: wrap;
+  background-color: #f4f4f4;
+}
+
+.cates .cate{
+  margin-right: 24rpx;
+  margin-bottom: 24rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid #333;
+  border-radius: 16rpx;
+}
+
+.cate.selected{
+  background-color: rgb(217, 249, 255);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  background-color: #fff;
+  border-bottom: 2rpx solid #eee;
+}
+
+.item .index{
+  padding: 0 12rpx;
+  font-size: 24rpx;
+}
+
+.item .content{
+  flex:1;
+}
+
+.item .summarizes{
+  display: flex;
+  text-align: center;
+}
+
+.item .summarize{
+  margin-right: 100rpx;
+}
+
+.item .name {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.item .little-gray {
+  font-size: 26rpx;
+  color: #969696;
+}
+
+.item .means {
+  font-size: 26rpx;
+  color: #424141;
+}
+
+.item .little-tag{
+  padding: 4rpx 8rpx;
+  color: #fff;
+  border: 2rpx solid #56d717;
+  background-color: #56d717;
+  border-radius: 8rpx;
+  font-weight: 400;
+  font-size: 24rpx;
+}
+
+.item .pron{
+  padding: 12rpx 0;
+}
+
+.item .pron+.pron{
+  margin-left: 20rpx;
+}
+
+.item .mean+.mean{
+  padding-top: 6rpx;
+}
+
+.item-line .red{
+  color: #fb2022;
+  border-color: #fb2022;
+}
+
+.item-line .gray{
+  color: #969696;
+}
+
+.status.success{
+  color:#56d717;
+}
+
+.status.fail{
+  color:#fb2022;
+}

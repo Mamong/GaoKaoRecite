@@ -1,0 +1,33 @@
+<!--pages/index/index.wxml-->
+<view class="app">
+	<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="navi">
+    <view class="navi-items">
+      <view class="navi-item {{status == 0?'selected':''}}" bindtap="onTapNavi" data-value="0">待掌握({{fresh}})</view>
+      <view class="navi-item {{status == 1?'selected':''}}" bindtap="onTapNavi" data-value="1">已掌握({{ripe}})</view>
+    </view>
+  </view>
+	<view class="list">
+		<view class="empty-tips" wx:if="{{list.length == 0}}">暂无相关单词</view>
+		<navigator class="item" wx:for="{{list}}" wx:key="_id" url="../../student-balance/index?id={{item.account}}">
+      <view class="index c-gray">{{index+1}}</view>
+      <view class="content">
+        <view class="name">
+					<view>{{item.word_name}}</view>
+        </view>
+        <view class="prons">
+          <text class="pron" data-pron="{{item.symbols[0].ph_en_mp3 ? item.symbols[0].ph_en_mp3 : item.symbols[0].ph_tts_mp3}}" bindtap="onTapPron" data-type="{{item.symbols[0].ph_en_mp3 ? 'ph_am_mp3':'ph_tts_mp3'}}">英/{{item.symbols[0].ph_en}}/</text>
+          <text class="pron" data-pron="{{item.symbols[0].ph_am_mp3 ? item.symbols[0].ph_am_mp3 : item.symbols[0].ph_tts_mp3}}" bindtap="onTapPron" data-type="{{item.symbols[0].ph_am_mp3 ? 'ph_am_mp3':'ph_tts_mp3'}}">美/{{item.symbols[0].ph_am}}/</text>
+        </view>
+        <view class="means">
+          <view class="mean" wx:for="{{item.symbols[0].parts}}">{{item.part}}<text wx:for="{{item.means}}">{{item}}，</text></view>
+        </view>
+      </view>
+      <view class="action">
+        <mp-icon wx:if="{{status == 0}}" bindtap="onTapAdd" data-index="{{index}}" icon="delete"></mp-icon>
+        <mp-icon wx:if="{{status == 1}}" bindtap="onTapRemove" data-index="{{index}}" icon="delete"></mp-icon>
+      </view>
+		</navigator>
+		<view class="empty-tips" wx:if="{{isEnd && list.length > 0}}">----已经到底了----</view>
+	</view>
+</view>

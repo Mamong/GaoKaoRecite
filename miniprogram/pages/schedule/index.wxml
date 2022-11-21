@@ -1,0 +1,28 @@
+<!--pages/schedule/index.wxml-->
+<view class="app">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="table">
+    <view class="header">
+      <view class="title bold">日期</view>
+      <view class="period">
+        <view class="name">记忆周期</view>
+        <view class="days">
+          <view class="day">首次</view>
+          <view class="day" wx:for="{{intervals}}">{{item}}天后</view>
+        </view>
+      </view>
+    </view>
+    <view class="body">
+      <view class="tr hover" wx:for="{{list}}" bindtap="onTapDay" data-index="{{index}}">
+        <view class="title">D{{index+1}}</view>
+        <view class="td-span">
+          <view wx:for="{{item}}" class="td" wx:key="list">
+            <block wx:if="{{item.list == 0}}">-</block>
+            <block wx:else>L{{item.list}} <icon wx:if="{{item.status>0}}" class="icon-box-img" type="success" size="23" color="{{colors[item.status]}}"></icon>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

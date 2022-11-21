@@ -1,0 +1,31 @@
+<!--pages/dictation/list/index.wxml-->
+<view class="app">
+  <view class="list">
+    <view class="section-title">
+      <view>未掌握</view>
+      <label class="radio" for="r1" bindtap="onFreshAll">
+        <radio value="r1" checked="{{freshAll}}" />全选
+      </label>
+    </view>
+    <view class="item" wx:for="{{freshList}}" wx:key="word" bindtap="onTapWord" data-section="0" data-index="{{index}}">
+      <view class="word bold">{{item.word}}</view>
+      <icon wx:if="{{item.checked}}" class="icon-small" type="success_no_circle" size="23"></icon>
+    </view>
+  </view>
+  <view class="list">
+    <view class="section-title">
+      <view>已掌握</view>
+      <label class="radio" for="r2" bindtap="onRipeAll">
+        <radio value="r2" checked="{{ripeAll}}" />全选
+      </label>
+    </view>
+    <view class="item" wx:for="{{ripeList}}" wx:key="word" bindtap="onTapWord" data-section="1" data-index="{{index}}">
+      <view class="word bold">{{item.word}}</view>
+      <icon wx:if="{{item.checked}}" class="icon-small" type="success_no_circle" size="23"></icon>
+    </view>
+  </view>
+  <view class="footer">
+    <button class="weui-btn" type="default" bindtap="onTapClear" size="mini">学习记录</button>
+    <button class="weui-btn" type="primary" bindtap="onTapFinish" size="mini">完成</button>
+  </view>
+</view>

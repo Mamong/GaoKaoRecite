@@ -1,0 +1,71 @@
+/* components/popover/index.wxss */
+.popover-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9000;
+}
+
+.popover-view {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 2px 2px #ddd;
+  border-radius: 6rpx;
+  z-index: 9001;
+}
+
+/* 实现三角形 */
+.popover-view::before {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0px;
+  content: '';
+  border-style: solid;
+  border-width: 6px;
+  border-color: #fff #fff transparent transparent;
+  box-shadow: 2px -2px 2px #ddd;
+}
+
+/* 上 */
+.popover-view.top::before {
+  bottom: -6px;
+  transform: rotate(135deg);
+}
+
+/* 下 */
+.popover-view.bottom::before {
+  top: -6px;
+  transform: rotate(-45deg);
+}
+
+/* 左 */
+.popover-view.left::before {
+  right: 20px;
+}
+
+/* 中 */
+.popover-view.center::before {
+  left: 50%;
+  margin-left: -6px;
+}
+
+/* 右 */
+.popover-view.right::before {
+  left: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .popover-view {
+    background: #343036;
+    box-shadow: 0 0 2px 2px #191719;
+  }
+
+  .popover-view::before {
+    border-color: #343036 #343036 transparent transparent;
+    box-shadow: 2px -2px 2px #191719;
+  }
+}

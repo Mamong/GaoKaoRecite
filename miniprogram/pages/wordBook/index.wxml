@@ -1,0 +1,36 @@
+<!--pages/wordBook/index.wxml-->
+<view class="app">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="cates">
+    <view class="cate {{item.key == key?'selected':''}}" wx:for="{{major_data}}" bindtap="onTapCate" data-key="{{item.key}}">{{item.name}}</view>
+  </view>
+  <view class="list" hidden="{{key == 1}}">
+    <view class="empty-tips" wx:if="{{list.length == 0}}">暂无相关单词书</view>
+    <view class="item" wx:for="{{list}}" wx:key="_id" data-index="{{index}}" bindtap="onTapBook">
+      <view class="index">{{index+1}}</view>
+      <view class="content">
+        <view class="name">
+          <view>{{item.name}}</view>
+        </view>
+        <view class="summarizes">
+          <view class="summarize">
+            <view class="little-gray">单词数量</view>
+            <view>{{item.word_count}}</view>
+          </view>
+          <view class="summarize" wx:if="{{item.ripeCount}}">
+            <view class="little-gray">熟词数量</view>
+            <view class="c-green">{{item.ripeCount}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="owner-list" hidden="{{key != 1}}">
+    <view class="book">
+      生词本
+    </view>
+    <view class="book">熟词本</view>
+    <view class="book">+单词书</view>
+  </view>
+  <view class="empty-tips" wx:if="{{isEnd && list.length > 0}}">----已经到底了----</view>
+</view>

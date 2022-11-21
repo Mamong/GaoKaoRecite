@@ -1,0 +1,37 @@
+/* pages/plan/list-market/index.wxss */
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  background-color: #fff;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.item .index {
+  padding: 0 12rpx;
+  font-size: 24rpx;
+}
+
+.item .content {
+  flex: 1;
+}
+
+.item .summarizes {
+  display: flex;
+  text-align: center;
+}
+
+.item .summarize {
+  margin-right: 100rpx;
+}
+
+.item .name {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.item .little-gray {
+  font-size: 26rpx;
+  color: #969696;
+}

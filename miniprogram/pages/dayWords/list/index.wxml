@@ -1,0 +1,66 @@
+<!--pages/dayWords/list/index.wxml-->
+<view class="app" data-weui-theme="{{theme}}">
+  <mp-navigation-bar ext-class="navigation-bar" loading="{{loading}}" show="{{nbShow}}" animated="{{animated}}" color="{{nbFrontColor[theme]}}" background="{{background[theme]}}" back="{{true}}">
+    <view id="title" slot="center" bindtap="onTapTitle">Day{{day}}</view>
+  </mp-navigation-bar>
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="list">
+    <view class="empty-tips" wx:if="{{list.length == 0}}">暂无相关单词</view>
+    <view class="item" wx:for="{{list}}" wx:key="_id">
+      <view class="index c-gray">{{index+1}}</view>
+      <view class="content {{layouts[formData.layout]}}">
+        <view class="word">
+          <view class="name" bindtap="onTapWord" data-index="{{index}}">{{item.showWord?item.word_name:'点击查看单词'}}</view>
+          <view class="prons" style="visibility:{{item.showWord?'show':'hidden'}}">
+            <text class="pron" data-pron="{{item.symbols[0].ph_en_mp3 ? item.symbols[0].ph_en_mp3 : item.symbols[0].ph_tts_mp3}}" bindtap="onTapPron" data-type="{{item.symbols[0].ph_en_mp3 ? 'ph_am_mp3':'ph_tts_mp3'}}">英/{{item.symbols[0].ph_en}}/</text>
+            <text class="pron" data-pron="{{item.symbols[0].ph_am_mp3 ? item.symbols[0].ph_am_mp3 : item.symbols[0].ph_tts_mp3}}" bindtap="onTapPron" data-type="{{item.symbols[0].ph_am_mp3 ? 'ph_am_mp3':'ph_tts_mp3'}}">美/{{item.symbols[0].ph_am}}/</text>
+          </view>
+        </view>
+        <view class="means" bindtap="onTapMeans" data-index="{{index}}">
+          <block wx:if="{{item.showMeans}}">
+            <view class="mean" wx:for="{{item.symbols[0].parts}}" wx:key="part">{{item.part}}<text wx:for="{{item.means}}" wx:key="*this">{{item}}，</text></view>
+          </block>
+          <block wx:else>点击查看释义</block>
+        </view>
+      </view>
+      <view class="action">
+        <mp-icon wx:if="{{status == 0}}" bindtap="onTapAdd" data-index="{{index}}" icon="delete"></mp-icon>
+        <mp-icon wx:if="{{status == 1}}" bindtap="onTapRemove" data-index="{{index}}" icon="delete"></mp-icon>
+      </view>
+    </view>
+    <view class="empty-tips" wx:if="{{isEnd && list.length > 0}}">----已经到底了----</view>
+  </view>
+  <view class="footer">
+    <view id="mode" class="tool-item" bindtap="onTapMode">模式</view>
+    <view class="tool-item {{index == item?'selected':''}}" wx:for="{{lists}}" wx:for-index="lindex" bindtap="onTapToolItem" data-index="{{item}}">L{{item}}</view>
+  </view>
+</view>
+
+
+<popover id='settings-popover' width="300" height="320" data-weui-theme="{{theme}}"  bindhide="saveSettings">
+  <mp-cells ext-class="my-cells" title="设置">
+    <mp-cell ext-class="my-cell" title="显示">
+      <segment slot="footer" items="{{['英文','中文','双语']}}" selectedIndex="{{formData.display}}" bindchange="onSegmentChange" data-field="display">
+      </segment>
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="排序">
+      <segment slot="footer" items="{{['默认','A-Z','Z-A','随机']}}" selectedIndex="{{formData.order}}" bindchange="onSegmentChange" data-field="order">
+      </segment>
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="布局">
+      <segment slot="footer" items="{{['垂直靠左','垂直靠右','水平靠左']}}" selectedIndex="{{formData.layout}}" bindchange="onSegmentChange" data-field="layout"></segment>
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="切词间隔">
+      <input slot="footer" bindinput="formInputChange" data-field="interval" class="weui-input" placeholder="请输入秒数" type="number" value="{{formData.interval}}" />
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="朗读次数">
+      <input slot="footer" bindinput="formInputChange" data-field="pronTimes" class="weui-input" placeholder="请输入次数" type="number" value="{{formData.pronTimes}}" />
+    </mp-cell>
+  </mp-cells>
+</popover>
+
+<popover id='mode-popover' height="150">
+  <view class="menu-item hover" bindtap="onTapMenu" data-url="../card/index">卡片模式</view>
+  <view class="menu-item hover" bindtap="onTapMenu" data-url="../../paraphrase/index">看词选义</view>
+  <view class="menu-item hover" bindtap="onTapMenu" data-url="../../dictation/index">听写默写</view>
+</popover>

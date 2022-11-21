@@ -1,0 +1,96 @@
+/**app.wxss**/
+
+.empty-tips{
+  text-align: center;
+  color: #969696;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+
+button {
+  background: initial;
+}
+
+button:focus{
+  outline: 0;
+}
+
+button::after{
+  border: none;
+}
+
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hover:hover{
+  background-color: rgba(0,0,0,.1);
+  opacity: .7;
+}
+
+.c-gray{
+  color: #969696;
+}
+
+.c-red{
+  color: #fb2022;
+}
+
+.b-red{
+  background-color: #fb2022;
+}
+
+.c-green{
+  color: #56d717;
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.center{
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #f6f6f6;
+  box-shadow: 4rpx 4rpx 10rpx #969696;
+  /* padding-top: 16rpx; */
+  padding-bottom: calc(0px + constant(safe-area-inset-bottom));
+  /*兼容 IOS<11.2*/
+  padding-bottom: calc(0px + env(safe-area-inset-bottom));
+  /*兼容 IOS>11.2*/
+  text-align: center;
+  z-index: 9;
+}
+
+.weui-navigation-bar__inner .weui-navigation-bar__left .weui-navigation-bar__btn_goback{
+  width: 80rpx !important;
+  mask-size: contain !important;
+  mask-position: left !important;
+    -webkit-mask-size: contain !important;
+    -webkit-mask-position: left !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  page {
+    background: #121212;
+  }
+
+  /* DarkMode 下的样式 end */
+}

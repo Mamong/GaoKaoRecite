@@ -1,0 +1,15 @@
+/* pages/dictation/result/index.wxss */
+.list {
+  padding: 24rpx;
+}
+
+.item {
+  display: flex;
+  border-bottom: 2rpx solid #888;
+  padding: 12rpx 0;
+}
+
+.item .word,
+.item .answer {
+  flex: 1;
+}

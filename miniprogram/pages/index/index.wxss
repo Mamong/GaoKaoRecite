@@ -1,0 +1,82 @@
+/* pages/index/index.wxss */
+.big-plan {
+  margin: 0 24rpx 24rpx;
+  background-color: #fcfafa;
+  border-radius: 40rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+}
+
+.section-title {
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  padding: 24rpx;
+}
+
+.list-container {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  background-color: #e4dad9;
+  border-top-left-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24rpx;
+  padding: 24rpx 24rpx;
+}
+
+.plan {
+  background-color: #fcfafa;
+  border-radius: 40rpx;
+  padding: 20rpx;
+  font-size: 26rpx;
+}
+
+/* .plan .title {
+  font-size: 28rpx;
+} */
+
+.plan .details,
+.big-plan .details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plan .detail,
+.big-plan .detail {
+  text-align: center;
+}
+
+.detail .name {
+  color: #969696;
+}
+
+.detail .value {
+  font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  /* DarkMode 下的样式 start */
+  /* .big-plan {
+    background: #343036;
+  } */
+
+  .plan, .big-plan {
+    background: #48444a;
+  }
+
+  .list-container {
+    background: #343036;
+  }
+
+  /* DarkMode 下的样式 end */
+}

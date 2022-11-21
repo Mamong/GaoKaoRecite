@@ -1,0 +1,110 @@
+/* pages/dictation/index.wxss */
+.progress {
+  padding: 0 24rpx;
+  text-align: right;
+  color: #969696;
+}
+
+.item {
+  padding: 0 24rpx;
+  text-align: center;
+}
+
+.item .index {
+  padding: 0 12rpx;
+  font-size: 24rpx;
+}
+
+.item .content {
+  flex: 1;
+}
+
+.item .name {
+  display: inline;
+  font-size: 50rpx;
+  font-weight: 500;
+  color: #000;
+}
+
+.name.fill {
+  background-color: #000;
+}
+
+.item .prons {
+  padding: 6rpx;
+  font-size: 26rpx;
+  color: #969696;
+}
+
+.item .pron {
+  display: inline-block;
+  margin-top: 6rpx;
+  line-height: 64rpx;
+}
+
+.item .pron-icon {
+  width: 64rpx;
+  display: inline-block;
+  margin-left: 4rpx;
+  vertical-align: bottom;
+}
+
+.item .pron+.pron {
+  margin-left: 32rpx;
+}
+
+.item .means {
+  margin-top: 6rpx;
+  font-size: 30rpx;
+  /* color: #424141; */
+}
+
+.word-input {
+  padding: 16rpx 0;
+  background-color: rgb(217, 249, 255);
+  margin-top: 60rpx;
+  font-weight: 500;
+  font-size: 50rpx;
+  text-align: center;
+  min-height: 2rem;
+  height: 2rem;
+}
+
+.my-cell {
+  padding: 12rpx 24rpx !important;
+  font-size: 30rpx !important;
+}
+
+.tool-bar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.tool-bar .tool-item {
+  display: inline-block;
+  font-size: 0;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  /* DarkMode 下的样式 start */
+  .item .name {
+    color: #fff;
+  }
+
+  .name.fill {
+    background-color: #fff;
+  }
+
+  .footer {
+    background: #48444a;
+  }
+
+  .word-input{
+    background: #5c77dd;
+  }
+
+  /* DarkMode 下的样式 end */
+}

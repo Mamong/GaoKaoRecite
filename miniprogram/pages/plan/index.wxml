@@ -1,0 +1,54 @@
+<!--pages/plan/index.wxml-->
+<view class="app">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="segments">
+    <view class="segment {{groupIndex == 0?'selected':''}}" bindtap="onTapSegment" data-index="0">自动分组</view>
+    <view class="segment {{groupIndex == 1?'selected':''}}" bindtap="onTapSegment" data-index="1">导入分组</view>
+  </view>
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells ext-class="my-cells" title="基本信息">
+      <mp-cell title="标题">
+        <input bindinput="formInputChange" data-field="title" class="weui-input" placeholder="请输入计划标题" value="{{formData.title}}" />
+      </mp-cell>
+      <block wx:if="{{groupIndex == 0}}">
+        <mp-cell title="词库" link bindtap="onTapPickBook">
+          <view slot="footer">{{formData.name?formData.name:'选择'}}</view>
+        </mp-cell>
+      </block>
+      <block wx:if="{{groupIndex == 1}}">
+        <mp-cell title="分组" link bindtap="onTapPickList">
+          <view slot="footer">{{formData.name?formData.name:'选择'}}</view>
+        </mp-cell>
+        <!-- <mp-cell link footer="{{formData.name}}" bindtap="onSelectGroupFile">
+          <view slot="title">
+            <view class="title">选择Excel文件</view>
+            <view class="subtitle">(每列单词为一个分组)</view>
+          </view>
+        </mp-cell> -->
+      </block>
+      <mp-cell title="单词数" footer="{{formData.wordCount}}"></mp-cell>
+    </mp-cells>
+    <mp-cells ext-class="my-cells" title="复习策略">
+      <mp-cell title="复习方法" link>
+        <picker slot="footer" data-field="strategyId" value="{{strategyIndex}}" bindchange="bindStrategyChange" range="{{strategies}}" range-key="name">
+          <view class="weui-input">{{strategies[strategyIndex].name}}</view>
+        </picker>
+      </mp-cell>
+      <block wx:if="{{groupIndex == 0}}">
+        <mp-cell title="分组数">
+          <input slot="footer" bindinput="formInputChange" data-field="listCount" class="weui-input" placeholder="请输入分组数" type="number" value="{{formData.listCount}}" />
+        </mp-cell>
+        <mp-cell title="每组单词" footer="{{formData.perlist}}个"></mp-cell>
+      </block>
+      <block wx:if="{{groupIndex == 1}}">
+        <mp-cell title="分组数" footer="{{formData.listCount}}"></mp-cell>
+      </block>
+      <mp-cell title="所需天数" footer="{{formData.costDays}}天"></mp-cell>
+    </mp-cells>
+    <mp-cells ext-class="my-cells" title="推送设置">
+      <mp-cell value="开启推送"></mp-cell>
+      <mp-cell value="推送时间"></mp-cell>
+    </mp-cells>
+  </mp-form>
+  <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+</view>

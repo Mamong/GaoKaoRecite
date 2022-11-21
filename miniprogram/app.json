@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/mine/mine",
+    "pages/wordBook/index",
+    "pages/bookWords/index",
+    "pages/bookPicker/index",
+    "pages/plan/index",
+    "pages/schedule/index",
+    "pages/paraphrase/index",
+    "pages/spell/index",
+    "pages/dayWords/list/index",
+    "pages/dayWords/card/index",
+    "pages/dictation/index",
+    "pages/dictation/result/index",
+    "pages/dictation/list/index",
+    "pages/list-market/index",
+    "pages/list-market/create/create"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "navigationBarTitleText": "高考单词"
+  },
+  "tabBar": {
+    "color": "@tabFontColor",
+    "selectedColor": "@tabSelectedColor",
+    "backgroundColor": "@tabBgColor",
+    "borderStyle": "@tabBorderStyle",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "计划",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index.png"
+      },
+      {
+        "pagePath": "pages/wordBook/index",
+        "text": "单词书",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index.png"
+      }
+    ]
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  }
+}

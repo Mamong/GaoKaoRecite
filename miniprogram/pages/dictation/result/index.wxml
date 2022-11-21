@@ -1,0 +1,10 @@
+<!--pages/dictation/result/index.wxml-->
+<view class="app">
+  <view class="list">
+    <view class="item" wx:for="{{list}}" wx:key="word">
+      <view class="word bold">{{item.word}}</view>
+      <view class="answer {{item.correct?'c-green':'c-red'}}">{{item.answer ? item.answer:'-'}}</view>
+      <icon class="icon-small" type="{{item.correct?'success':'cancel'}}" size="23"></icon>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+<!--pages/plan/list-market/index.wxml-->
+<view class="app" data-weui-theme="{{theme}}">
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+  <view class="list">
+    <view class="empty-tips" wx:if="{{list.length == 0}}">暂无相关分组</view>
+    <view class="item" wx:for="{{list}}" wx:key="_id" data-index="{{index}}" bindtap="onTapList">
+      <view class="index">{{index+1}}</view>
+      <view class="content">
+        <view class="name">
+          <view>{{item.title}}</view>
+        </view>
+        <view class="summarizes">
+          <view class="summarize">
+            <view class="little-gray">单词数量</view>
+            <view>{{item.wordCount}}</view>
+          </view>
+          <view class="summarize">
+            <view class="little-gray">分组数量</view>
+            <view>{{item.listCount}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="empty-tips" wx:if="{{isEnd && list.length > 0}}">----已经到底了----</view>
+  </view>
+  <view class="footer">
+    <button class="weui-btn" type="primary" bindtap="createLists">创建分组</button>
+  </view>
+</view>

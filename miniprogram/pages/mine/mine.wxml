@@ -1,0 +1,17 @@
+<!--pages/mine/mine.wxml-->
+<view class="app" data-weui-theme="{{theme}}">
+  <!-- <mp-navigation-bar loading="{{loading}}" show="{{show}}" animated="{{animated}}" color="{{color}}" background="{{background}}" title="我的" back="{{false}}"></mp-navigation-bar> -->
+  <mp-cells ext-class="my-cells" title="基本设置">
+    <!-- <mp-cell ext-class="my-cell" title="显示模式">
+      <segment slot="footer" items="{{['系统','浅色','深色']}}" selectedIndex="{{mode}}" bindchange="onThemeChange" data-field="mode"></segment>
+    </mp-cell> -->
+    <mp-cell ext-class="my-cell" title="默认发音">
+      <segment slot="footer" items="{{['英音','美音']}}" selectedIndex="{{pron}}" bindchange="onSegmentChange" data-field="pron"></segment>
+    </mp-cell>
+  </mp-cells>
+  <mp-cells ext-class="my-cells" title="其他">
+    <mp-cell value="反馈" link></mp-cell>
+    <mp-cell value="用户隐私" link></mp-cell>
+    <mp-cell value="关于" link></mp-cell>
+  </mp-cells>
+</view>

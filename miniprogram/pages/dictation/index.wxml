@@ -1,0 +1,86 @@
+<!--pages/dictation/index.wxml-->
+<view class="app">
+  <mp-navigation-bar ext-class="navigation-bar" loading="{{loading}}" show="{{nbShow}}" animated="{{animated}}" color="{{nbFrontColor[theme]}}" background="{{background[theme]}}" back="{{true}}">
+    <view id="title" slot="center" bindtap="onTapTitle">听写默写(L{{index}})</view>
+  </mp-navigation-bar>
+  <view class="progress" bindtap="onTapFirst">({{current+1}}/{{total}})</view>
+  <view class="item">
+    <view class="name {{showWord?'':'fill'}}" bindtap="onTapWord">{{item.word_name}}
+      <!-- <view>{{showWord?item.word_name:'查看单词'}}</view> -->
+    </view>
+    <view class="prons">
+      <view class="pron" data-pron="{{item.symbols[0].ph_en_mp3 ? item.symbols[0].ph_en_mp3 : item.symbols[0].ph_tts_mp3}}" bindtap="onTapPron" data-type="{{item.symbols[0].ph_en_mp3 ? 'ph_am_mp3':'ph_tts_mp3'}}">英<image class="pron-icon" src="../../images/speaker.png" mode="widthFix"></image>
+      </view>
+      <view class="pron" data-pron="{{item.symbols[0].ph_am_mp3 ? item.symbols[0].ph_am_mp3 : item.symbols[0].ph_tts_mp3}}" bindtap="onTapPron" data-type="{{item.symbols[0].ph_am_mp3 ? 'ph_am_mp3':'ph_tts_mp3'}}">美<image class="pron-icon" src="../../images/speaker.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="means" bindtap="onTapMeans">
+      <block wx:if="{{showMeans}}">
+        <view class="mean" wx:for="{{item.symbols[0].parts}}" wx:key="part">{{item.part}}<text wx:for="{{item.means}}" wx:key="*this">{{item}}，</text></view>
+      </block>
+      <block wx:else>点击查看释义</block>
+    </view>
+    <input class="word-input" type="text" hold-keyboard="{{true}}" bindinput="wordInputChange" value="{{input_word}}" wx:if="{{formData.input == 1}}" focus="{{focus}}" bindconfirm="onTapFinish">
+    <keyboard-accessory class="tool-bar" style="height: 44px;color: black;">
+      <button bindtap="onTapShuffle">
+        <cover-image class="tool-item" src="../../images/shuffle.png"></cover-image>
+      </button>
+      <button bindtap="onTapPrev">
+        <cover-image class="tool-item" src="../../images/backward.png"></cover-image>
+      </button>
+      <button bindtap="onTapPlay">
+        <cover-image class="tool-item" src="../../images/{{playing?'pause':'play'}}.png"></cover-image>
+      </button>
+      <button bindtap="onTapNext">
+        <cover-image class="tool-item" src="../../images/forward.png"></cover-image>
+      </button>
+      <button bindtap="onTapFinish">
+        <cover-image class="tool-item" src="../../images/stop.png"></cover-image>
+      </button>
+    </keyboard-accessory>
+    </input>
+  </view>
+  <view class="footer">
+    <view class="tool-bar">
+      <button bindtap="onTapShuffle">
+        <image class="tool-item" src="../../images/shuffle.png" mode="widthFix"></image>
+      </button>
+      <button bindtap="onTapPrev">
+        <image class="tool-item" src="../../images/backward.png" mode="widthFix"></image>
+      </button>
+      <button bindtap="onTapPlay">
+        <image class="tool-item" src="../../images/{{playing?'pause':'play'}}.png" mode="widthFix"></image>
+      </button>
+      <button bindtap="onTapNext">
+        <image class="tool-item" src="../../images/forward.png" mode="widthFix"></image>
+      </button>
+      <button bindtap="onTapList">
+        <image class="tool-item" src="../../images/list.png" mode="widthFix"></image>
+      </button>
+    </view>
+  </view>
+</view>
+
+<popover id='settings-popover' width="300" height="320" bindhide="saveSettings">
+  <mp-cells ext-class="my-cells" title="听写设置">
+    <mp-cell ext-class="my-cell" title="显示">
+      <segment slot="footer" items="{{['隐藏','英文','中文','双语']}}" selectedIndex="{{formData.display}}" bindchange="onSegmentChange" data-field="display">
+      </segment>
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="播放">
+      <segment slot="footer" items="{{['没有','英文','中文','双语']}}" selectedIndex="{{formData.pron}}" bindchange="onSegmentChange" data-field="pron"></segment>
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="输入">
+      <segment slot="footer" items="{{['没有','键盘','选词']}}" selectedIndex="{{formData.input}}" bindchange="onSegmentChange" data-field="input"></segment>
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="忽略大小写">
+      <switch slot="footer" checked="{{formData.ignoreCapital}}" bindchange="onSwitchChange" data-field="ignoreCapital" />
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="切词间隔">
+      <input slot="footer" bindinput="formInputChange" data-field="interval" class="weui-input" placeholder="请输入秒数" type="number" value="{{formData.interval}}" />
+    </mp-cell>
+    <mp-cell ext-class="my-cell" title="朗读次数">
+      <input slot="footer" bindinput="formInputChange" data-field="pronTimes" class="weui-input" placeholder="请输入次数" type="number" value="{{formData.pronTimes}}" />
+    </mp-cell>
+  </mp-cells>
+</popover>

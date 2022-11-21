@@ -1,0 +1,83 @@
+/* pages/schedule/index.wxss */
+Page{
+  background-color: #434343;
+
+}
+
+.table .header{
+  display: flex;
+  position: sticky;
+  top: 0;
+  text-align: center;
+  background-color: #434343;
+  color: rgb(219, 214, 214);
+}
+
+.header .title, .tr .title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14.2%;
+}
+
+.header .days, .tr .td-span{
+  display: flex;
+  flex: 1;
+}
+
+.days .day{
+  font-size: 28rpx;
+}
+
+.header .period{
+  flex:1;
+}
+
+.period .name{
+  font-size: 32rpx;
+  border-bottom: 2rpx solid #000;
+  border-left: 2rpx solid #000;
+}
+
+.table .body{
+  background: #434343;
+  color: rgb(219, 214, 214);
+}
+
+.table .tr{
+  display: flex;
+  text-align: center;
+  border-top: 2rpx solid #000;
+}
+
+.table .tr:last-child{
+  border-bottom: 2rpx solid #000;
+}
+
+.table .td,.days .day{
+  flex: 1;
+  padding: 12rpx 0;
+  border-left: 2rpx solid #000;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  /* DarkMode 下的样式 start */
+  .item {
+    background: #343036;
+  }
+
+  .cates {
+    background: #343036;
+  }
+
+  .cates .cate {
+    border-color: #fff;
+  }
+
+  .cate.selected {
+    background: #5c77dd;
+  }
+
+  /* DarkMode 下的样式 end */
+}

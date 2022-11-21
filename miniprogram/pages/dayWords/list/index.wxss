@@ -1,0 +1,154 @@
+/* pages/dayWords/list/index.wxss */
+.app {
+  padding: 10rpx;
+  margin-bottom: 74rpx;
+}
+
+.navi{
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  border-radius: 20rpx;
+  background-color: #fff;
+  box-shadow: 4rpx 4rpx 10rpx #969696;
+}
+
+.navi .navi-items{
+  display: flex;
+  text-align: center;
+}
+
+.navi .navi-item{
+  width: 50%;
+  padding: 16rpx;
+  font-size: 28rpx;
+}
+
+.navi-item.selected {
+  background-color: #e7e7e7;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  background-color: #fff;
+  border-bottom: 2rpx solid #ddd;
+}
+
+.item .index{
+  padding: 0 12rpx;
+  font-size: 24rpx;
+}
+
+.item .content{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content.h{
+  flex-direction: row;
+}
+
+.content.right{
+  text-align: right;
+}
+
+.item .name {
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.item .pron {
+  padding: 8rpx 0;
+  font-size: 26rpx;
+  color: #969696;
+}
+
+.item .means {
+  font-size: 26rpx;
+  /* color: #424141; */
+}
+
+.item .h .word{
+  flex: 2;
+}
+
+.item .h .means{
+  flex: 3;
+}
+
+.item .h .prons{
+  display: flex;
+  flex-direction: column;
+}
+
+.item .v .pron+.pron{
+  margin-left: 20rpx;
+}
+
+.item .action{
+  padding: 12rpx;
+}
+
+.footer{
+  display: flex;
+}
+
+.footer .tool-item{
+  padding: 12rpx 0;
+  width: 14.2%;
+  background: #fff;
+}
+
+.footer .tool-item:first-child{
+  border-right: solid 2rpx #ddd;
+}
+
+
+.tool-item.selected {
+  background: #e7e7e7;
+}
+
+.menu-item{
+  padding: 16rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #ddd;
+}
+
+.my-cell {
+  padding: 12rpx 24rpx !important;
+  font-size: 30rpx !important;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  /* DarkMode 下的样式 start */
+  .item {
+    background: #343036;
+    border-color: #191719;
+  }
+
+  .footer {
+    background: #48444a;
+  }
+
+  .footer .tool-item{
+    background: #232323;
+  }
+
+  .footer .tool-item:first-child{
+    border-right: solid 2rpx #191719;
+  }
+  
+  .tool-item.selected {
+    background: #292929aa;
+  }
+
+  .menu-item{
+    background: #343036;
+    border-color: #191719;
+  }
+  /* DarkMode 下的样式 end */
+}
